@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router";
 import Sidebar from "../../features/Sidebar/Sidebar";
 import Topbar from "../../features/Topbar/Topbar";
+import BackgroundOverlay from "../common/BackgroundOverlay";
 
 function DashboardLayout() {
   return (
@@ -11,10 +12,10 @@ function DashboardLayout() {
         <Topbar></Topbar>
 
         <div id="content" className="mt-6 container mx-auto">
-          <div className="relative z-10 "> 
+          <div className="relative z-10 ">
             <Outlet></Outlet>
           </div>
-          {/* <BackgroundOverlay></BackgroundOverlay> */}
+          <BackgroundOverlay></BackgroundOverlay>
         </div>
       </section>
     </main>
