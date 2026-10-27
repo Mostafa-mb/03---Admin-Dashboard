@@ -6,16 +6,12 @@ import Tickets from "./pages/Tickets/page";
 import TicketDetails from "./pages/TicketDetails/Page";
 import Comments from "./pages/Comments/Page";
 import clsx from "clsx";
+import DashboardLayout from "./components/layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div className={clsx("text-center","p-4","bg-gray-100","min-h-screen")}>
-        Application Layout
-        <Outlet></Outlet>
-      </div>
-    ),
+    element: <DashboardLayout></DashboardLayout>,
     children: [
       {
         index: true,
