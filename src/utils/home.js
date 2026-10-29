@@ -1,0 +1,40 @@
+import { BiShoppingBag } from "react-icons/bi";
+import { HiUsers, HiDocumentText } from "react-icons/hi";
+import { RiAdminFill } from "react-icons/ri";
+import { TiTicket } from "react-icons/ti";
+
+const generateSummaries = ({
+  productsLength = 0,
+  usersLength = 0,
+  ticketsLength = 0,
+  adminsLength = 0,
+}) => {
+  return [
+    {
+      id: 1,
+      title: "تعداد محصولات",
+      value: productsLength,
+      Icon: BiShoppingBag,
+    },
+    {
+      id: 2,
+      title: "تعداد کاربران",
+      value: usersLength,
+      Icon: HiUsers,
+    },
+    {
+      id: 3,
+      title: "تعداد تیکت ها",
+      value: ticketsLength,
+      Icon: HiDocumentText,
+    },
+    {
+      id: 4,
+      title: "تعداد مدیران",
+      value: adminsLength,
+      Icon: RiAdminFill,
+    },
+  ];
+};
+
+export { generateSummaries };
