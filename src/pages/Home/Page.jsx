@@ -3,6 +3,7 @@ import SectionTitle from "../Comments/SectionTitle";
 import { useNavigate } from "react-router";
 import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
+import LastProductTable from "../../features/LastProductTable/LastProductTable";
 
 function Home() {
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -37,8 +38,8 @@ function Home() {
       <Summaries></Summaries>
       <div className="">
         <DetailsCharts></DetailsCharts>
-        {/* <ProductsTable></ProductsTable>
-        <QuickOverview></QuickOverview> */}
+        <LastProductTable></LastProductTable>
+        {/* <QuickOverview></QuickOverview> */}
       </div>
     </>
   );
