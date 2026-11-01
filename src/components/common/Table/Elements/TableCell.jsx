@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function TableCell() {
-  return (
-    <div>TableCell</div>
-  )
+function TableCell({ children }) {
+  return <div className="line-clamp-1">{children}</div>;
 }
 
-export default TableCell
+export default TableCell;

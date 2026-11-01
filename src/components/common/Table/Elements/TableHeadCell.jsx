@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function TableHeadCell() {
-  return (
-    <div>TableHeadCell</div>
-  )
+function TableHeadCell({ children }) {
+  return <div>{children}</div>;
 }
 
-export default TableHeadCell
+export default TableHeadCell;
