@@ -9,6 +9,9 @@ import TableBody from "../../components/common/Table/Elements/TableBody";
 import TableRow from "../../components/common/Table/Elements/TableRow";
 import TableCell from "../../components/common/Table/Elements/TableCell";
 import clsx from "clsx";
+import RemoveProductIcon from "./components/RemoveProductIcon";
+import ChangeVisibilityIcon from "./components/ChangeVisibilityIcon";
+import EditProductIcon from "./components/EditProductIcon";
 
 function LastProductTable() {
   const buttons = () => {
@@ -49,7 +52,13 @@ function LastProductTable() {
               <TableCell>
                 {product.price.toLocaleString("fa-ir")} ریال
               </TableCell>
-              <TableCell>{}</TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <RemoveProductIcon></RemoveProductIcon>
+                  <ChangeVisibilityIcon></ChangeVisibilityIcon>
+                  <EditProductIcon></EditProductIcon>
+                </div>
+              </TableCell>
             </TableRow>
           );
         })}
