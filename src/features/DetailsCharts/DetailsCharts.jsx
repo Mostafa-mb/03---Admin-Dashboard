@@ -1,6 +1,14 @@
 import React from "react";
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { generateChartData } from "../../utils/home";
+import customTooltip from "./components/customTooltip";
 
 function DetailsCharts() {
   const data = generateChartData({
@@ -20,7 +28,7 @@ function DetailsCharts() {
           >
             <XAxis dataKey="name"></XAxis>
             <YAxis></YAxis>
-            <Tooltip></Tooltip>
+            <Tooltip content={customTooltip}></Tooltip>
             <Bar dataKey="value" fill="#8884d8" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
