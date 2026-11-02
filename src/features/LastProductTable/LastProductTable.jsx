@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../../components/common/Table/Table";
 import { Link } from "react-router";
 import { MdOpenInNew } from "react-icons/md";
@@ -14,6 +14,8 @@ import ChangeVisibilityIcon from "./components/ChangeVisibilityIcon";
 import EditProductIcon from "./components/EditProductIcon";
 
 function LastProductTable() {
+  const [lastProducts, setLastProducts] = useState([...products]);
+
   const buttons = () => {
     return (
       <Link
@@ -25,6 +27,11 @@ function LastProductTable() {
       </Link>
     );
   };
+
+  const removeProduct = (id) => {
+    const newProducts = lastProducts.filter((product) => product.id !== id);
+    setLastProducts(newProducts);
+  };
   return (
     <Table header={{ title: "لیست محصولات", Buttons: buttons }}>
       <TableHead>
@@ -34,7 +41,7 @@ function LastProductTable() {
       </TableHead>
 
       <TableBody>
-        {products.map((product, index) => {
+        {lastProducts.map((product, index) => {
           return (
             <TableRow key={product.id}>
               <TableCell>{index + 1}</TableCell>
@@ -54,9 +61,11 @@ function LastProductTable() {
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <RemoveProductIcon></RemoveProductIcon>
-                  <ChangeVisibilityIcon></ChangeVisibilityIcon>
-                  <EditProductIcon></EditProductIcon>
+                  <RemoveProductIcon product={product} handler={removeProduct}></RemoveProductIcon>
+                  <ChangeVisibilityIcon
+                    product={product}
+                  ></ChangeVisibilityIcon>
+                  <EditProductIcon product={product}></EditProductIcon>
                 </div>
               </TableCell>
             </TableRow>
