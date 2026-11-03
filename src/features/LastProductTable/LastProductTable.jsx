@@ -44,7 +44,14 @@ function LastProductTable() {
   };
 
   return (
-    <Table header={{ title: "لیست محصولات", Buttons: buttons }}>
+    <Table
+      header={{ title: "لیست محصولات", Buttons: buttons }}
+      pagination={{
+        items: lastProducts,
+        setItems: setLastProducts,
+        itemsPerPage: 10,
+      }}
+    >
       <TableHead>
         {productsTableHeadRow.map((cell) => (
           <TableHeadCell key={cell}>{cell}</TableHeadCell>
