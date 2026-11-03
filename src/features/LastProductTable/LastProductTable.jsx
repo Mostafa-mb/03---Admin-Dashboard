@@ -32,6 +32,17 @@ function LastProductTable() {
     const newProducts = lastProducts.filter((product) => product.id !== id);
     setLastProducts(newProducts);
   };
+
+  const changeProductVisibility = (id) => {
+    const newProducts = lastProducts.map((product) => {
+      return product.id === id
+        ? { ...product, isPublished: !product.isPublished }
+        : { ...product };
+    });
+
+    setLastProducts(newProducts);
+  };
+
   return (
     <Table header={{ title: "لیست محصولات", Buttons: buttons }}>
       <TableHead>
@@ -61,9 +72,13 @@ function LastProductTable() {
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <RemoveProductIcon product={product} handler={removeProduct}></RemoveProductIcon>
+                  <RemoveProductIcon
+                    product={product}
+                    handler={removeProduct}
+                  ></RemoveProductIcon>
                   <ChangeVisibilityIcon
                     product={product}
+                    handler={changeProductVisibility}
                   ></ChangeVisibilityIcon>
                   <EditProductIcon product={product}></EditProductIcon>
                 </div>
