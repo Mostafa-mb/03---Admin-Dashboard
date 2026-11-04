@@ -3,20 +3,21 @@ import SectionTitle from "../Comments/SectionTitle";
 import { useNavigate } from "react-router";
 import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
-import LastProductTable from "../../features/LastProductTable/LastProductTable";
+import ProductsTable from "../../features/ProductsTable/ProductsTable";
+import QuickOverview from "../../features/QuickOverview/QuickOverview";
 
 function Home() {
   const [isRedirecting, setIsRedirecting] = useState(false);
   const navigate = useNavigate();
 
-  const toggle = ()=>{
+  const toggle = () => {
     setIsRedirecting(!isRedirecting);
-  }
+  };
 
   const CTAButton = () => {
     const clickHandler = () => {
       toggle();
-      navigate("/products")
+      navigate("/products");
     };
 
     return (
@@ -24,7 +25,7 @@ function Home() {
         onClick={clickHandler}
         className="primary-bg px-4 py-2 text-sm rounded-md cursor-pointer hover:opacity-90 text-white"
       >
-       {isRedirecting ? "در حال انتقال" : "ایجاد محصول"}
+        {isRedirecting ? "در حال انتقال" : "ایجاد محصول"}
       </button>
     );
   };
@@ -38,8 +39,8 @@ function Home() {
       <Summaries></Summaries>
       <div className="">
         <DetailsCharts></DetailsCharts>
-        <LastProductTable></LastProductTable>
-        {/* <QuickOverview></QuickOverview> */}
+        <ProductsTable></ProductsTable>
+        <QuickOverview></QuickOverview>
       </div>
     </>
   );
