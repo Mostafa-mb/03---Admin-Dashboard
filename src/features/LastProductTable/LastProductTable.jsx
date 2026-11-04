@@ -47,9 +47,9 @@ function LastProductTable() {
     <Table
       header={{ title: "لیست محصولات", Buttons: buttons }}
       pagination={{
-        items: lastProducts,
+        items: products,
         setItems: setLastProducts,
-        itemsPerPage: 10,
+        itemsPerPage: 4,
       }}
     >
       <TableHead>

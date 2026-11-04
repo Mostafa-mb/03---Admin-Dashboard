@@ -1,9 +1,17 @@
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Pagination = ({ items, setItems, itemsPerPage }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const pagesCount = Math.ceil(items.length / itemsPerPage);
+
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedItems = items.slice(startIndex, endIndex);
+    setItems(paginatedItems)
+  }, [currentPage]);
+
   const changePageHandler = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className="pagination bg-zinc-50/40" dir="rtl">
@@ -19,6 +27,9 @@ const Pagination = ({ items, setItems, itemsPerPage }) => {
       <button
         disabled={currentPage === pagesCount}
         onClick={() => changePageHandler(currentPage + 1)}
+        className={clsx("pagination-prev-button", {
+          "pages-ended active-tab": currentPage === pagesCount,
+        })}
       >
         بعدی
       </button>
