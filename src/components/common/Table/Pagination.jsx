@@ -9,10 +9,32 @@ const Pagination = ({ items, setItems, itemsPerPage }) => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const paginatedItems = items.slice(startIndex, endIndex);
-    setItems(paginatedItems)
+    setItems(paginatedItems);
   }, [currentPage]);
 
   const changePageHandler = (pageNumber) => setCurrentPage(pageNumber);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+
+    for (let i = 1; i <= pagesCount; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => changePageHandler(i)}
+          className={clsx("pagination-button", {
+            "active-tab": currentPage === i,
+            "non-active:-tab": currentPage !== i,
+          })}
+        >
+          {i}
+        </button>,
+      );
+    }
+
+    return pageNumbers;
+  };
+
   return (
     <div className="pagination bg-zinc-50/40" dir="rtl">
       <button
@@ -24,6 +46,9 @@ const Pagination = ({ items, setItems, itemsPerPage }) => {
       >
         قبلی
       </button>
+
+      {renderPageNumbers()}
+
       <button
         disabled={currentPage === pagesCount}
         onClick={() => changePageHandler(currentPage + 1)}
