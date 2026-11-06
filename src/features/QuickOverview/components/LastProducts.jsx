@@ -2,6 +2,7 @@ import React from "react";
 import SectionTitle from "../../../pages/Comments/SectionTitle";
 import { products } from "../../../data/products";
 import ProductCard from "./ProductCard";
+import OpenInPage from "./OpenInPage";
 
 const LastProducts = () => {
   return (
@@ -12,6 +13,10 @@ const LastProducts = () => {
           <ProductCard key={product.id} {...product}></ProductCard>
         ))}
       </div>
+      <OpenInPage
+        itemsLength={products.length}
+        navigateTo="/products"
+      ></OpenInPage>
     </div>
   );
 };
