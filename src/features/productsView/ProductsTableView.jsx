@@ -8,7 +8,7 @@ import TableCell from "../../components/common/Table/Elements/TableCell";
 import { productsAllTableHeadRow } from "../../data/products";
 import clsx from "clsx";
 
-const ProductsTableView = ({ products, setProducts }) => {
+const ProductsTableView = ({ products, setProducts, paginatedProducts }) => {
   return (
     <Table
       header={{ title: "لیست محصولات", Buttons: undefined }}
@@ -21,7 +21,7 @@ const ProductsTableView = ({ products, setProducts }) => {
       </TableHead>
 
       <TableBody>
-        {products.map((productItem) => (
+        {paginatedProducts.map((productItem) => (
           <TableRow key={productItem.id}>
             <TableCell>{productItem.id.slice(0, 10)}...</TableCell>
             <TableCell>{productItem.title}</TableCell>
@@ -32,13 +32,15 @@ const ProductsTableView = ({ products, setProducts }) => {
                 className="w-25 rounded-md border primary-border-color"
               />
             </TableCell>
-            <TableCell
-              className={clsx(
-                productItem.isPublished ? "success-badge" : "danger-badge",
-                "badge",
-              )}
-            >
-              {productItem.isPublished ? "عمومی" : "خصوصی"}
+            <TableCell>
+              <p
+                className={clsx(
+                  productItem.isPublished ? "success-badge" : "danger-badge",
+                  "badge",
+                )}
+              >
+                {productItem.isPublished ? "عمومی" : "خصوصی"}
+              </p>
             </TableCell>
             <TableCell>
               {productItem.price.toLocaleString("fa-IR")} تومان

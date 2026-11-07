@@ -7,7 +7,7 @@ import ProductsGridView from "../../features/productsView/ProductsGridView";
 
 function Products() {
   const [layoutType, setLayoutType] = useState("TABLE"); // TABLE or GRID
-  const [allProducts, setAllProducts] = useState([...products]);
+  const [paginatedProducts, setPaginatedProducts] = useState([...products]);
 
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
@@ -36,12 +36,14 @@ function Products() {
         {layoutType === "TABLE" ? (
           <ProductsTableView
             products={products}
-            setProducts={setAllProducts}
+            paginatedProducts={paginatedProducts}
+            setProducts={setPaginatedProducts}
           ></ProductsTableView>
         ) : (
           <ProductsGridView
             products={products}
-            setProducts={setAllProducts}
+            paginatedProducts={paginatedProducts}
+            setProducts={setPaginatedProducts}
           ></ProductsGridView>
         )}
       </section>
