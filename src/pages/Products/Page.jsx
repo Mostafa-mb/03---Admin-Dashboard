@@ -6,7 +6,8 @@ import ProductsTableView from "../../features/productsView/ProductsTableView";
 import ProductsGridView from "../../features/productsView/ProductsGridView";
 
 function Products() {
-  const [layoutType, setLayoutType] = useState("GRID"); // or GRID
+  const [layoutType, setLayoutType] = useState("TABLE"); // TABLE or GRID
+  const [allProducts, setAllProducts] = useState([...products]);
 
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
@@ -33,9 +34,15 @@ function Products() {
       <SectionTitle title="محصولات" Buttons={buttons}></SectionTitle>
       <section className="mt-10 w-full min-w-full">
         {layoutType === "TABLE" ? (
-          <ProductsTableView products={products}></ProductsTableView>
+          <ProductsTableView
+            products={products}
+            setProducts={setAllProducts}
+          ></ProductsTableView>
         ) : (
-          <ProductsGridView products={products}></ProductsGridView>
+          <ProductsGridView
+            products={products}
+            setProducts={setAllProducts}
+          ></ProductsGridView>
         )}
       </section>
     </>
