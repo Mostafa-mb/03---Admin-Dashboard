@@ -10,24 +10,24 @@ import AddProductFields from "../../features/ProductsTable/components/AddProduct
 function Products() {
   const [layoutType, setLayoutType] = useState("TABLE"); // TABLE or GRID
   const [paginatedProducts, setPaginatedProducts] = useState([...products]);
-  const [newProduct , setNewProduct] = useState({
-    id:crypto.randomUUID,
-    title:"",
-    description:"",
-    price:"",
-    img:"/images/product-img.png",
-    isPublished:false,
-    entity:""
-  })
+  const [newProduct, setNewProduct] = useState({
+    id: crypto.randomUUID,
+    title: "",
+    description: "",
+    price: "",
+    img: "/images/product-img.png",
+    isPublished: false,
+    entity: "",
+  });
 
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
     setLayoutType(layout);
   };
 
-  const createNewProduct = ()=>{
-    console.log("new product created");
-  }
+  const createNewProduct = () => {
+    products.push(newProduct);
+  };
 
   const buttons = (
     <>
@@ -42,8 +42,15 @@ function Products() {
         )}
       </button>
       {/*  */}
-      <Modal Trigger={<button className="primary-bg px-3 py-1">ایجاد محصول</button>} title="ایجاد محصول جدید" onSubmit={createNewProduct} >
-      <AddProductFields newProduct={newProduct} onChange={setNewProduct}></AddProductFields>
+      <Modal
+        Trigger={<button className="primary-bg px-3 py-1">ایجاد محصول</button>}
+        title="ایجاد محصول جدید"
+        onSubmit={createNewProduct}
+      >
+        <AddProductFields
+          newProduct={newProduct}
+          onChange={setNewProduct}
+        ></AddProductFields>
       </Modal>
     </>
   );
