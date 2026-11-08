@@ -4,15 +4,30 @@ import { CiGrid41, CiViewTable } from "react-icons/ci";
 import { products } from "../../data/products";
 import ProductsTableView from "../../features/productsView/ProductsTableView";
 import ProductsGridView from "../../features/productsView/ProductsGridView";
+import Modal from "../../components/common/Modal";
+import AddProductFields from "../../features/ProductsTable/components/AddProductFields";
 
 function Products() {
   const [layoutType, setLayoutType] = useState("TABLE"); // TABLE or GRID
   const [paginatedProducts, setPaginatedProducts] = useState([...products]);
+  const [newProduct , setNewProduct] = useState({
+    id:crypto.randomUUID,
+    title:"",
+    description:"",
+    price:"",
+    img:"/images/product-img.png",
+    isPublished:false,
+    entity:""
+  })
 
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
     setLayoutType(layout);
   };
+
+  const createNewProduct = ()=>{
+    console.log("new product created");
+  }
 
   const buttons = (
     <>
@@ -26,7 +41,10 @@ function Products() {
           <CiViewTable></CiViewTable>
         )}
       </button>
-      <button className="primary-bg px-3 py-1">ایجاد محصول</button>
+      {/*  */}
+      <Modal Trigger={<button className="primary-bg px-3 py-1">ایجاد محصول</button>} title="ایجاد محصول جدید" onSubmit={createNewProduct} >
+      <AddProductFields></AddProductFields>
+      </Modal>
     </>
   );
   return (
