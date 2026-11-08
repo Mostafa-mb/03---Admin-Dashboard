@@ -43,7 +43,7 @@ function Products() {
       </button>
       {/*  */}
       <Modal Trigger={<button className="primary-bg px-3 py-1">ایجاد محصول</button>} title="ایجاد محصول جدید" onSubmit={createNewProduct} >
-      <AddProductFields></AddProductFields>
+      <AddProductFields newProduct={newProduct} onChange={setNewProduct}></AddProductFields>
       </Modal>
     </>
   );

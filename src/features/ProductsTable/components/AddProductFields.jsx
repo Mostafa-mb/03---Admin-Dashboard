@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddProductFields = () => {
+const AddProductFields = ({ newProduct, onChange }) => {
   const fields = [
     { label: "عنوان محصول", key: "title", type: "text" },
     { label: "وضعیت انتشار", key: "isPublished", type: "select" },
@@ -8,6 +8,9 @@ const AddProductFields = () => {
     { label: "قیمت محصول", key: "price", type: "number" },
     { label: "توضیحات محصول", key: "description", type: "textarea" },
   ];
+
+  const handleChange = (key , value) => {console.log(key , value);};
+
   return (
     <div>
       {fields.map((field) => (
@@ -18,11 +21,19 @@ const AddProductFields = () => {
           {field.type === "textarea" ? (
             <textarea className="block mt-2 text-sm min-h-35 px-3 rounded-md bg-linear-to-t from-zinc-100/70 shadow placeholder:text-sm border outline-none primary-border-color w-full"></textarea>
           ) : field.type === "select" ? (
-            <select className="block mt-2 px-3 rounded-md bg-linear-to-t from-zinc-100/70 shadow placeholder:text-sm h-10 border outline-none primary-border-color w-full" value={"false"}>
-                <option value="true">منتشر شده</option>
-                <option value="false">منتشر نشده</option>
+            <select
+              className="block mt-2 px-3 rounded-md bg-linear-to-t from-zinc-100/70 shadow placeholder:text-sm h-10 border outline-none primary-border-color w-full"
+              value={"false"}
+            >
+              <option value="true">منتشر شده</option>
+              <option value="false">منتشر نشده</option>
             </select>
-          ) : <input type={field.type} className="block mt-2 px-3 rounded-md bg-linear-to-t from-zinc-100/70 shadow placeholder:text-sm h-10 border outline-none primary-border-color w-full"></input>}
+          ) : (
+            <input
+              type={field.type}
+              className="block mt-2 px-3 rounded-md bg-linear-to-t from-zinc-100/70 shadow placeholder:text-sm h-10 border outline-none primary-border-color w-full"
+            ></input>
+          )}
         </div>
       ))}
     </div>
